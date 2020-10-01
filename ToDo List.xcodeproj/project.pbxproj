@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F69D19A12526415200CEE3A8 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D19A02526415200CEE3A8 /* TasksTableViewCell.swift */; };
+		F69D19A42526416900CEE3A8 /* TasksTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D19A32526416900CEE3A8 /* TasksTableVC.swift */; };
+		F69D19A72526417F00CEE3A8 /* AddTodoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D19A62526417F00CEE3A8 /* AddTodoVC.swift */; };
+		F69D19AB25264BB400CEE3A8 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D19A925264BB400CEE3A8 /* Todo+CoreDataClass.swift */; };
+		F69D19AC25264BB400CEE3A8 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D19AA25264BB400CEE3A8 /* Todo+CoreDataProperties.swift */; };
 		F6C34C682526103800A5FB64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C34C672526103800A5FB64 /* AppDelegate.swift */; };
 		F6C34C6A2526103800A5FB64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C34C692526103800A5FB64 /* SceneDelegate.swift */; };
 		F6C34C6F2526103800A5FB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6C34C6D2526103800A5FB64 /* Main.storyboard */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F69D19A02526415200CEE3A8 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
+		F69D19A32526416900CEE3A8 /* TasksTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableVC.swift; sourceTree = "<group>"; };
+		F69D19A62526417F00CEE3A8 /* AddTodoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoVC.swift; sourceTree = "<group>"; };
+		F69D19A925264BB400CEE3A8 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F69D19AA25264BB400CEE3A8 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F6C34C642526103800A5FB64 /* ToDo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C34C672526103800A5FB64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6C34C692526103800A5FB64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +47,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F69D19AE25264BC100CEE3A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F69D19A925264BB400CEE3A8 /* Todo+CoreDataClass.swift */,
+				F69D19AA25264BB400CEE3A8 /* Todo+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F6C34C5B2526103800A5FB64 = {
 			isa = PBXGroup;
 			children = (
+				F69D19AE25264BC100CEE3A8 /* Model */,
 				F6C34C662526103800A5FB64 /* ToDo List */,
 				F6C34C652526103800A5FB64 /* Products */,
 			);
@@ -58,6 +78,9 @@
 			children = (
 				F6C34C672526103800A5FB64 /* AppDelegate.swift */,
 				F6C34C692526103800A5FB64 /* SceneDelegate.swift */,
+				F69D19A02526415200CEE3A8 /* TasksTableViewCell.swift */,
+				F69D19A32526416900CEE3A8 /* TasksTableVC.swift */,
+				F69D19A62526417F00CEE3A8 /* AddTodoVC.swift */,
 				F6C34C6D2526103800A5FB64 /* Main.storyboard */,
 				F6C34C732526103F00A5FB64 /* Assets.xcassets */,
 				F6C34C752526103F00A5FB64 /* LaunchScreen.storyboard */,
@@ -137,8 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F69D19A72526417F00CEE3A8 /* AddTodoVC.swift in Sources */,
+				F69D19AC25264BB400CEE3A8 /* Todo+CoreDataProperties.swift in Sources */,
+				F69D19AB25264BB400CEE3A8 /* Todo+CoreDataClass.swift in Sources */,
+				F69D19A12526415200CEE3A8 /* TasksTableViewCell.swift in Sources */,
 				F6C34C682526103800A5FB64 /* AppDelegate.swift in Sources */,
 				F6C34C6A2526103800A5FB64 /* SceneDelegate.swift in Sources */,
+				F69D19A42526416900CEE3A8 /* TasksTableVC.swift in Sources */,
 				F6C34C722526103800A5FB64 /* ToDo_List.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
