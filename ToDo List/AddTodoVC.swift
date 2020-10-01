@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTodoVC: UIViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var addTodoField: UITextView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -50,10 +52,18 @@ class AddTodoVC: UIViewController {
     }
     
     @IBAction func donePressed(_ sender: Any) {
-        dismissAndResign()
+        guard let title = addTodoField.text, !title.isEmpty else {return}
+        let newTask = Todo(context: context)
+        newTask.title = addTodoField.text
+        
+        // Save data
+        do{
+            try context.save()
+            dismissAndResign()
+        } catch {
+            print(error)
+        }
     }
-    
-
 }
 
 extension AddTodoVC: UITextViewDelegate {
