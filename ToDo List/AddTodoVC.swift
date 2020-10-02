@@ -8,10 +8,8 @@
 import UIKit
 import CoreData
 
-
-
 class AddTodoVC: UIViewController {
-    
+
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var addTodoField: UITextView!

@@ -52,7 +52,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="239-In-oGQ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="xrz-tj-8fb" kind="presentation" id="hys-Du-Z50"/>
+                                <segue destination="xrz-tj-8fb" kind="presentation" identifier="" id="hys-Du-Z50"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -64,7 +64,7 @@
         <!--Add TodoVC-->
         <scene sceneID="By4-Iq-EC5">
             <objects>
-                <viewController id="xrz-tj-8fb" customClass="AddTodoVC" customModule="ToDo_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addTasks" id="xrz-tj-8fb" customClass="AddTodoVC" customModule="ToDo_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CD0-lz-UYw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,6 +72,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rfv-vW-a59">
                                 <rect key="frame" x="20" y="59.999999999999986" width="374" height="151.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="151.66999999999999" id="dOt-F2-Ssq"/>
                                 </constraints>

@@ -15,6 +15,8 @@ class DataManager{
 
 class TasksTableVC: UITableViewController {
     
+    
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var items: [Todo]?
@@ -25,10 +27,10 @@ class TasksTableVC: UITableViewController {
         super.viewDidLoad()
         fetchTodo()
         DataManager.shared.tasksTableVC = self
-        
+
     }
     
-    
+
     func fetchTodo(){
         do{
             self.items = try context.fetch(Todo.fetchRequest())
@@ -66,8 +68,7 @@ class TasksTableVC: UITableViewController {
             self.items?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.context.delete(itemToRemove)
-
-
+            
             do{
             try self.context.save()
             } catch {
@@ -79,8 +80,32 @@ class TasksTableVC: UITableViewController {
         
         let action2 = UIContextualAction(style: .normal, title: "Edit") { (action2, view, completion) in
             let itemToEdit = self.items![indexPath.row]
-            print(itemToEdit)
             
+            let alert = UIAlertController(title: "Edit Todo", message: "", preferredStyle: .alert)
+            alert.addTextField()
+            
+            let textField = alert.textFields![0]
+            textField.text = itemToEdit.title
+            
+            let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
+                let textField = alert.textFields![0]
+                
+                itemToEdit.title = textField.text ?? ""
+                
+                do{
+                    try self.context.save()
+                } catch {
+                    print(error)
+                }
+                self.fetchTodo()
+            }
+            alert.addAction(saveButton)
+            alert.addAction(cancelButton)
+            self.present(alert, animated: true, completion: nil)
         }
         
         
@@ -91,6 +116,7 @@ class TasksTableVC: UITableViewController {
         
         return UISwipeActionsConfiguration(actions: [action, action2])
     }
+    
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
