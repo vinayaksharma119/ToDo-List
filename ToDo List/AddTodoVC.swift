@@ -8,6 +8,8 @@
 import UIKit
 import CoreData
 
+
+
 class AddTodoVC: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -59,6 +61,7 @@ class AddTodoVC: UIViewController {
         // Save data
         do{
             try context.save()
+            DataManager.shared.tasksTableVC.fetchTodo()
             dismissAndResign()
         } catch {
             print(error)

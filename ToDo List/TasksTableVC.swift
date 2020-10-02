@@ -8,6 +8,11 @@
 import UIKit
 import CoreData
 
+class DataManager{
+    static let shared = DataManager()
+    var tasksTableVC = TasksTableVC()
+}
+
 class TasksTableVC: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -20,6 +25,8 @@ class TasksTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTodo()
+        DataManager.shared.tasksTableVC = self
+        
     }
     
     
