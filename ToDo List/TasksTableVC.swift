@@ -15,8 +15,6 @@ class DataManager{
 
 class TasksTableVC: UITableViewController {
     
-    
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var items: [Todo]?
@@ -27,7 +25,6 @@ class TasksTableVC: UITableViewController {
         super.viewDidLoad()
         fetchTodo()
         DataManager.shared.tasksTableVC = self
-
     }
     
 
@@ -88,7 +85,9 @@ class TasksTableVC: UITableViewController {
             textField.text = itemToEdit.title
             
             let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    tableView.setEditing(false, animated: true)
+                }
             }
             
             let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
@@ -98,10 +97,12 @@ class TasksTableVC: UITableViewController {
                 
                 do{
                     try self.context.save()
+                    
                 } catch {
                     print(error)
                 }
                 self.fetchTodo()
+                
             }
             alert.addAction(saveButton)
             alert.addAction(cancelButton)
@@ -117,9 +118,8 @@ class TasksTableVC: UITableViewController {
         return UISwipeActionsConfiguration(actions: [action, action2])
     }
     
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
