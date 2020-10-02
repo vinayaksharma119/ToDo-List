@@ -19,7 +19,6 @@ class TasksTableVC: UITableViewController {
     
     var items: [Todo]?
 
-    let checkmarkImage = UIImage(systemName: "checkmark")
     let trashImage = UIImage(systemName: "trash")
     
     override func viewDidLoad() {
@@ -59,23 +58,42 @@ class TasksTableVC: UITableViewController {
 
         return cell
     }
+
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            completion(true)
+            let itemToRemove = self.items![indexPath.row]
+            self.items?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.context.delete(itemToRemove)
+
+
+            do{
+            try self.context.save()
+            } catch {
+                print(error)
+            }
+
+            self.fetchTodo()
         }
+        
+        let action2 = UIContextualAction(style: .normal, title: "Edit") { (action2, view, completion) in
+            let itemToEdit = self.items![indexPath.row]
+            print(itemToEdit)
+            
+        }
+        
+        
         action.image = trashImage
         action.backgroundColor = .systemRed
-        return UISwipeActionsConfiguration(actions: [action])
+        
+        action2.backgroundColor = .systemYellow
+        
+        return UISwipeActionsConfiguration(actions: [action, action2])
     }
-    
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Check") { (action, view, completion) in
-            completion(true)
-        }
-        action.image = checkmarkImage
-        action.backgroundColor = .systemGreen
-        return UISwipeActionsConfiguration(actions: [action])
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //
     }
 
 }
