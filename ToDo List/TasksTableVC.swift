@@ -30,7 +30,13 @@ class TasksTableVC: UITableViewController {
 
     func fetchTodo(){
         do{
-            self.items = try context.fetch(Todo.fetchRequest())
+            let request = Todo.fetchRequest() as NSFetchRequest<Todo>
+            
+            let sort = NSSortDescriptor(key: "date", ascending: false)
+            
+            request.sortDescriptors = [sort]
+            
+            self.items = try context.fetch(request)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

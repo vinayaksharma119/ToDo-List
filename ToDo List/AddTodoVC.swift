@@ -55,7 +55,7 @@ class AddTodoVC: UIViewController {
         guard let title = addTodoField.text, !title.isEmpty else {return}
         let newTask = Todo(context: context)
         newTask.title = addTodoField.text
-        
+        newTask.date = Date()
         // Save data
         do{
             try context.save()
