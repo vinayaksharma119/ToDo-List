@@ -15,6 +15,8 @@ class DataManager{
 
 class TasksTableVC: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var items: [Todo]?
@@ -128,4 +130,39 @@ class TasksTableVC: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+}
+
+//MARK: - Search bar
+
+extension TasksTableVC: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        do{
+            let request = Todo.fetchRequest() as NSFetchRequest<Todo>
+            let predicate = NSPredicate(format: "title CONTAINS[c] '\(searchText)'")
+            request.predicate = predicate
+        
+            self.items = try context.fetch(request)
+        
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                }
+            }  catch {
+            print(error)
+        }
+        
+        if searchText.isEmpty {
+            fetchTodo()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        fetchTodo()
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(true)
+    }
 }
