@@ -29,7 +29,6 @@ class TasksTableVC: UITableViewController {
         DataManager.shared.tasksTableVC = self
     }
     
-
     func fetchTodo(){
         do{
             let request = Todo.fetchRequest() as NSFetchRequest<Todo>
@@ -66,6 +65,11 @@ class TasksTableVC: UITableViewController {
         return cell
     }
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
@@ -126,9 +130,6 @@ class TasksTableVC: UITableViewController {
         return UISwipeActionsConfiguration(actions: [action, action2])
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
 
 }
 
