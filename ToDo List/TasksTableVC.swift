@@ -87,7 +87,7 @@ class TasksTableVC: UITableViewController {
             self.fetchTodo()
         }
         
-        let action2 = UIContextualAction(style: .normal, title: "Edit") { (action2, view, completion) in
+        let action2 = UIContextualAction(style: .destructive, title: "Edit") { (action2, view, completion) in
             let itemToEdit = self.items![indexPath.row]
             
             let alert = UIAlertController(title: "Edit Todo", message: "", preferredStyle: .alert)
